@@ -12,6 +12,8 @@ function startGame() {
 const holes = document.querySelectorAll('.hole');
 const tiemposEnMilisegundos = [];
 
+//Devlolver un número aleatorio  entre 1 y 3 segundos
+
 function randomHole(excluir) {
     let segundo;
     do {
@@ -21,7 +23,9 @@ function randomHole(excluir) {
     return segundo;
 }
 
-let ultimoSegundo = 0; // Change const to let
+//Devuelve los segundos que van a tardar los topos en estar levantados
+
+let ultimoSegundo = 0; 
 
 function getTime() {
     const nuevoSegundo = randomHole(ultimoSegundo);
@@ -34,6 +38,10 @@ function getTime() {
     return tiemposEnMilisegundos;
 }
 
+//Variable index, genera un número aleatorio entre 1 y 6
+//Math.round(index)=>redondea el valor
+//setTimeout=> elimina la clase up después de pasar x segundos
+
 function asomar() {
     let index = Math.random() * (6 - 1) + 1;
     let indexRedondeado = Math.round(index);
@@ -42,9 +50,12 @@ function asomar() {
     holeIndividual.classList.add('up');
     setTimeout(() => {
         holeIndividual.classList.remove('up');
-        asomar(); // Call asomar again after the mole disappears
+        asomar();
     }, tiemposEnMilisegundos[tiemposEnMilisegundos.length - 1]);
 }
+
+//wack=> gestiona la iteracción cuando se hace click en un topo
+
 
 function wack(holeIndividual) {
     const moles = document.querySelectorAll('.mole');
